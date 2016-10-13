@@ -1,0 +1,11 @@
+import React from 'react'
+import { storiesOf } from '@kadira/storybook'
+import <%= componentName %> from '.'
+
+storiesOf('<%= componentName %>', module)
+  .add('with custom text', () => (
+    <<%= componentName %>>I'm an example with custom text</<%= componentName %>>
+  ))
+  .add('with default text', () => (
+    <<%= componentName %> />
+  ))

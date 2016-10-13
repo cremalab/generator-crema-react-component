@@ -1,0 +1,21 @@
+import React from 'react'
+import { shallow } from 'enzyme'
+import <%= componentName %> from '.'
+
+describe('<<%= componentName %> />', () => {
+
+  it('renders default text', () => {
+    const text = shallow(
+      <<%= componentName %> />
+    ).text()
+    expect(text).toBe('Example')
+  })
+
+  it('renders text passed as children', () => {
+    const text = shallow(
+      <<%= componentName %>>Yo</<%= componentName %>>
+    ).text()
+    expect(text).toBe('Yo')
+  })
+
+})

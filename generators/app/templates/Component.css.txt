@@ -1,0 +1,6 @@
+.<%= componentName %> {
+  padding: 1em 1.5em;
+  background: whitesmoke;
+  border-radius: 0.25em;
+  border: 2px solid lightgray;
+}

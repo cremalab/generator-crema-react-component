@@ -3,7 +3,7 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-const componentTypes = [
+const componentLocations = [
   {name: 'Element', path: 'src/ui/elements'},
   {name: 'View', path: 'src/ui/views'}
 ];
@@ -14,14 +14,15 @@ describe('component generator', function () {
       return helpers.run(path.join(__dirname, '../generators/app'))
         .withPrompts({
           componentName: 'Test',
-          componentType: 'Element'
+          componentType: 'Stateless',
+          componentLocation: 'Element'
         })
         .withLocalConfig({
-          componentTypes
+          componentLocations
         })
         .toPromise();
     });
-    it('with local config componentTypes', function () {
+    it('with local config componentLocations', function () {
       assert.file([
         'src/ui/elements/Test/Test.css',
         'src/ui/elements/Test/Test.js',
@@ -35,7 +36,8 @@ describe('component generator', function () {
     before(function () {
       return helpers.run(path.join(__dirname, '../generators/app'))
         .withPrompts({
-          componentName: 'Test'
+          componentName: 'Test',
+          componentType: 'Stateless'
         })
         .toPromise();
     });

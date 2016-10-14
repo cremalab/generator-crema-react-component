@@ -6,7 +6,7 @@ var PATH = require('path');
 
 module.exports = yeoman.Base.extend({
   initializing: function () {
-    this.types = this.config.get('componentTypes');
+    this.types = this.config.get('componentLocations');
   },
 
   prompting: function () {
@@ -19,15 +19,22 @@ module.exports = yeoman.Base.extend({
       {
         type: 'input',
         name: 'componentName',
-        message: 'Name of component?',
+        message: 'Name of component:',
+        required: true
+      },
+      {
+        type: 'list',
+        name: 'componentType',
+        message: 'Choose Type:',
+        choices: ['Stateless', 'Stateful'],
         required: true
       }
     ];
 
     const prompts = this.types ? defaultPrompts.concat({
       type: 'list',
-      name: 'componentType',
-      message: 'Choose type:',
+      name: 'componentLocation',
+      message: 'Choose location:',
       choices: this.types.map(x => x.name)
     }) : defaultPrompts;
 
@@ -38,8 +45,8 @@ module.exports = yeoman.Base.extend({
   },
 
   writing: function () {
-    const {componentName: name, componentType} = this.props;
-    const type = this.types && this.types.find(x => x.name === componentType);
+    const {componentName: name, componentType, componentLocation} = this.props;
+    const type = this.types && this.types.find(x => x.name === componentLocation);
     const path = type ? type.path : `./`;
     const dir = PATH.join(path, name) + '/';
     const file = name;
@@ -51,7 +58,10 @@ module.exports = yeoman.Base.extend({
     );
 
     this.fs.copyTpl(
-      this.templatePath('Component.js.txt'),
+      this.templatePath(
+        componentType === 'Stateless' ?
+          'Component.stateless.js.txt' :
+          'Component.stateful.js.txt'),
       this.destinationPath(`${dir}${file}.js`),
       this.props
     );

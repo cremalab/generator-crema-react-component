@@ -8,7 +8,7 @@ describe('<<%= componentName %> />', () => {
     const text = shallow(
       <<%= componentName %> />
     ).text()
-    expect(text).toBe('Example')
+    expect(text).toBe('<%= componentName %>')
   })
 
   it('renders text passed as children', () => {

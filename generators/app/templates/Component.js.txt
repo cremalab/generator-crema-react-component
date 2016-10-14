@@ -3,7 +3,7 @@ import './<%= componentName %>.css'
 
 const <%= componentName %> = ({children}) => (
   <div className='<%= componentName %>'>
-    {children || 'Example'}
+    {children || '<%= componentName %>'}
   </div>
 )
 

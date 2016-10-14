@@ -1,6 +1,6 @@
 {
   "name": "generator-crema-react-component",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A React Component generator from Crema",
   "homepage": "",
   "author": {
@@ -45,10 +45,6 @@
   "repository": "cremalab/generator-crema-react-component",
   "scripts": {
     "test": "gulp"
-  },
-  "engines": {
-    "node": "^6.2.2",
-    "npm": "^3.9.5"
   },
   "license": "Apache-2.0"
 }

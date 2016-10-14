@@ -12,7 +12,9 @@ class <%= componentName %> extends Component {
   }
 }
 
-<%= componentName %>.propTypes = {}
+<%= componentName %>.propTypes = {
+  children: React.PropTypes.any
+}
 
 export {
   <%= componentName %> as default

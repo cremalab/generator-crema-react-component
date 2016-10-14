@@ -8,7 +8,7 @@ const <%= componentName %> = ({children}) => (
 )
 
 <%= componentName %>.propTypes = {
-  children: React.PropTypes.string
+  children: React.PropTypes.any
 }
 
 export {

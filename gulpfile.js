@@ -18,7 +18,12 @@ gulp.task('static', function () {
 });
 
 gulp.task('nsp', function (cb) {
-  nsp({package: path.resolve('package.json')}, cb);
+  nsp({
+    shrinkwrap: path.join(__dirname, 'npm-shrinkwrap.json'),
+    package: path.join(__dirname, 'package.json'),
+    stopOnError: true,
+    output: 'summary'
+  }, cb);
 });
 
 gulp.task('pre-test', function () {
@@ -58,5 +63,4 @@ gulp.task('coveralls', ['test'], function () {
     .pipe(coveralls());
 });
 
-gulp.task('prepublish', ['nsp']);
 gulp.task('default', ['static', 'test', 'coveralls']);

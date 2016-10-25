@@ -1,11 +1,13 @@
 import React from 'react'
 import './<%= componentName %>.css'
 
-const <%= componentName %> = ({children}) => (
-  <div className='<%= componentName %>'>
-    {children || '<%= componentName %>'}
-  </div>
-)
+function <%= componentName %>({children}) {
+  return (
+    <div className='<%= componentName %>'>
+      {children || '<%= componentName %>'}
+    </div>
+  )
+}
 
 <%= componentName %>.propTypes = {
   children: React.PropTypes.any

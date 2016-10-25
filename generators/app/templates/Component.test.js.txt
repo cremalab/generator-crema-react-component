@@ -5,17 +5,8 @@ import <%= componentName %> from '.'
 describe('<<%= componentName %> />', () => {
 
   it('renders default text', () => {
-    const text = shallow(
-      <<%= componentName %> />
-    ).text()
-    expect(text).toBe('<%= componentName %>')
-  })
-
-  it('renders text passed as children', () => {
-    const text = shallow(
-      <<%= componentName %>>Yo</<%= componentName %>>
-    ).text()
-    expect(text).toBe('Yo')
+    const actual = shallow(<<%= componentName %> />)
+    expect(actual.find('.<%= componentName %>')).toBeTruthy()
   })
 
 })
